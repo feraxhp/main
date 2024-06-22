@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "name": "Run Web",
+            "type": "gradle",
+            "workingDir": "$WORKSPACE_DIR$",
+            "tasks": ["jsBrowserDevelopmentRun"],
+            "args": ["-p", "$WORKSPACE_DIR$\\sample\\composeApp"],
+            "initScripts": {
+                "flmapper": "ext.mapPath = { path -> null }"
+            },
+        },
+    ]
+}
