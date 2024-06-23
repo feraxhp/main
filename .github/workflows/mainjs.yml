@@ -43,8 +43,8 @@ jobs:
           java-version: 17
       - name: Build with Gradle
         run: ./gradlew :composeApp:jsBrowserProductionWebpack
-      - name: view files
-        run: ls -R
+      - name: copy files
+        run: cp -r ./composeApp/build/kotlin-webpack/js/productionExecutable/* ./composeApp/build/processedResources/js/main
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
