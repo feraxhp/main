@@ -28,29 +28,28 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout sources
-      uses: actions/checkout@v4
-    - name: Setup Gradle
-      uses: gradle/gradle-build-action@v3
-    - name: Setup Java
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: 17
-    - name: Build with Gradle
-      run: ./gradlew :composeApp:jsBrowserProductionWebpack
-
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Setup Pages
-      uses: actions/configure-pages@v5
-    - name: view files
-      run: ls -R
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        # Upload just the compiled JavaScript files
-        path: './composeApp/build/processedResources/js/main'
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Checkout sources
+        uses: actions/checkout@v4
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: 17
+      - name: Build with Gradle
+        run: ./gradlew :composeApp:jsBrowserProductionWebpack
+      - name: view files
+        run: ls -R
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload just the compiled JavaScript files
+          path: './composeApp/build/processedResources/js/main'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
